@@ -5,7 +5,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">With Home Icon</h5>
+            <h5 class="card-title">Dashboard</h5>
 
             <nav>
                 <ol class="breadcrumb">
