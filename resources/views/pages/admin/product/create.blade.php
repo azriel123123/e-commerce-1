@@ -40,8 +40,7 @@
                 </div>
                 <div class="col-12">
                     <label for="productDescription" class="form-label">Description</label>
-                    <textarea class="form-control" aria-label="With textarea" id="productDescription" name="description"
-                        value="{{ old('description') }}"></textarea>
+                    <textarea class="form-control" aria-label="With textarea" id="productDescription" name="description">{{ old('description') }}</textarea>
                 </div>
                 <div class="mt-4">
                     <a href="{{ route('admin.product.index') }}" class="btn btn-secondary"
