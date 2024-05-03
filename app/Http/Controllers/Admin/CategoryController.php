@@ -50,7 +50,7 @@ class CategoryController extends Controller
 
             return redirect()->back()->with('success', "Category Has Been Successfully Added");
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Failed To Get Category');
+            return redirect()->back()->with('error', 'Failed To Add Category');
         }
     }
 
