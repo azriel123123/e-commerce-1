@@ -55,6 +55,21 @@
     <!-- End Sidebar-->
 
     <main id="main" class="main">
+        {{-- Handle Error --}}
+        @if ($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show">
+                <h4 class="alert-heading">There's something wrong!</h4>
+                <hr>
+                <p>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </p>
+            </div>
+        @endif
+
         @yield('content')
     </main><!-- End #main -->
 
@@ -74,6 +89,45 @@
     <script src="{{ asset('dashboard/vendor/simple-datatables/simple-datatables.js') }}"></script>
     <script src="{{ asset('dashboard/vendor/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('dashboard/vendor/php-email-form/validate.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script>
+        //sweetalert for success or error message
+        @if (session()->has('success'))
+            swal({
+                type: "success",
+                icon: "success",
+                title: "BERHASIL!",
+                text: "{{ session('success') }}",
+                timer: 5000,
+                showConfirmButton: false,
+                showCancelButton: false,
+                buttons: false,
+            });
+        @elseif (session()->has('error'))
+            swal({
+                type: "error",
+                icon: "error",
+                title: "GAGAL!",
+                text: "{{ session('error') }}",
+                timer: 5000,
+                showConfirmButton: false,
+                showCancelButton: false,
+                buttons: false,
+            });
+        @elseif (session()->has('info'))
+            swal({
+                type: "info",
+                icon: "info",
+                title: "INFO!",
+                text: "{{ session('info') }}",
+                timer: 5000,
+                showConfirmButton: false,
+                showCancelButton: false,
+                buttons: false,
+            });
+        @endif
+    </script>
 
     <!-- Template Main JS File -->
     <script src="{{ asset('dashboard/js/main.js') }}"></script>
