@@ -1,6 +1,6 @@
 @extends('layouts.parent')
 
-@section('title', 'Category')
+@section('title', 'Product')
 
 @section('content')
     <div class="card">
@@ -39,6 +39,9 @@
                             <td>{{ $row->category->name }}</td>
                             <td>{{ $row->price }}</td>
                             <td>
+                                <a href="{{ route('admin.product.gallery.index', $row->id) }}" class="btn btn-primary">
+                                    <i class="bi bi-image"></i>
+                                    </a>
                                 <a href="{{ route('admin.product.edit', $row->id) }}" class="btn btn-warning">
                                 <i class="bi bi-pencil"></i>
                                 </a>

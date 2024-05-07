@@ -10,12 +10,12 @@
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed {{ request()->routeIs('admin.category.*') ? '' : 'collapse' }}"
+            <a class="nav-link {{ request()->routeIs('admin.category.*' || 'admin.product.*') ? '' : 'collapsed' }}"
                 data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Product</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="components-nav"
-                class="nav-content collapse {{ request()->routeIs('admin.category.*') ? 'show' : '' }}"
+                class="nav-content collapse {{ request()->routeIs('admin.category.*' || 'admin.product.*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{ route('admin.category.index') }}"

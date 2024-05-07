@@ -29,7 +29,7 @@ class ProductController extends Controller
 
         return view('pages.admin.product.create', compact('category'));
     }
-
+ 
     /**
      * Store a newly created resource in storage.
      */
@@ -50,7 +50,7 @@ class ProductController extends Controller
 
             return redirect()->route('admin.product.index')->with('success', 'Product Has Been Successfully Added');
         } catch (\Exception $e) {
-            return redirect()->route('admin.product.index')->with('error', 'Failed To Added Product');
+            return redirect()->back()->with('error', 'Failed To Added Product');
         }
     }
 
@@ -96,7 +96,7 @@ class ProductController extends Controller
             return redirect()->route('admin.product.index')->with('success', 'Product Has Been Successfully Edited');
         } catch (\Exception $e) {
             dd($e->getMessage());
-            return redirect()->route('admin.product.index')->with('error', 'Failed To Edited Product');
+            return redirect()->back()->with('error', 'Failed To Edited Product');
         }
     }
 
