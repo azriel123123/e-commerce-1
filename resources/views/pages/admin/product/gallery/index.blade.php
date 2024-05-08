@@ -15,9 +15,14 @@
                 </ol>
             </nav>
 
+            <a href="{{ route('admin.product.index') }}" class="btn btn-primary">
+            <i class="bi bi-arriw-left"></i>Back
+            </a>
+
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
                 <i class="bi bi-plus"></i> Add Gallery
             </button>
+            
             @include('pages.admin.product.gallery.modal-create')
 
             <table class="table">
