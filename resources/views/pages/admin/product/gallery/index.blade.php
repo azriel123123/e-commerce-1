@@ -29,11 +29,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>aa</td>
-                        <td>dd</td>
-                    </tr>
+                    @forelse ($product->product_galleries as $row)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>
+                                <img src="{{ url('storage/product/gallery', $row->image) }}" alt="" class="img-thumbnail" width="100">
+                            </td>
+                            <td>
+                                <form action="{{ route('admin.product.gallery.destroy', [$product->id ,$row->id]) }}"
+                                    method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="3" class="text-center">Data Is Empty</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
