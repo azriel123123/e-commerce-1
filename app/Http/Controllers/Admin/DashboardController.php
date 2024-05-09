@@ -22,6 +22,11 @@ $user = User::where('role', 'user')->count();
             'product',
             'user'
         ));
+        $category = Category::count();
+        $product = Product::count();
+        $user = User::where('role', 'user')->count();
+
+        return view('pages.admin.index', compact('category', 'product', 'user'));
     }
 
 }

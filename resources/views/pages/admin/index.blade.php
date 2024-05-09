@@ -105,33 +105,5 @@
         <div id="clock"></div>
 
 
-        Hello {{ Auth::user()->name }}
-    @endsection
-
-    @push('scripts')
-        <script>
-            // Fungsi untuk menampilkan jam dengan zona waktu Indonesia (WIB)
-            function showTime() {
-                const date = new Date();
-                const options = {
-                    timeZone: 'Asia/Jakarta', // Waktu Indonesia Barat (WIB)
-                    hour12: false, // Gunakan format 24 jam
-                    hour: 'numeric',
-                    minute: 'numeric',
-                    second: 'numeric'
-                };
-
-                // Format waktu sesuai dengan zona waktu Indonesia
-                const timeString = date.toLocaleString('en-US', options);
-
-                // Tampilkan waktu dalam elemen dengan id 'clock'
-                document.getElementById('clock').innerHTML = timeString;
-            }
-
-            // Panggil fungsi showTime setiap detik
-            setInterval(showTime, 1000);
-
-            // Panggil showTime sekali saat halaman dimuat untuk menampilkan waktu awal
-            showTime();
-        </script>
-    @endpush
+    Hello {{ Auth::user()->name }}
+@endsection
