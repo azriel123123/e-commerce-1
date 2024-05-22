@@ -31,6 +31,31 @@
             </ul>
         </li><!-- End Components Nav -->
 
+        
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('admin.transaction.index*') || request()->routeIs('admin.my-transaction.show*') ? '' : 'collapsed' }}"
+                data-bs-toggle="collapse" href="#transaction-nav">
+                <i class="bi bi-menu-button-wide"></i>
+                <span>Transaction</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="transaction-nav"
+                class="nav-content collapse {{ request()->routeIs('admin.transaction.index*') || request()->routeIs('admin.product.*') ? 'show' : '' }}"
+                data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('admin.transaction.index') }}" class="{{ request()->routeIs('admin.transaction.index') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i>
+                        <span>Transaction</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.my-transaction.index') }}" class="{{ request()->routeIs('admin.my-transaction.*') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i>
+                        <span>My Transaction</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
     </ul>
 
 </aside>

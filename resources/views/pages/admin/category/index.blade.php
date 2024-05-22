@@ -22,28 +22,27 @@
             </button>
             @include('pages.admin.category.modal-create')
 
-            <table class="table datatable">
-                <thead>
+            <table class="table table-striped table-hover mt-3">
+                <thead class="table-dark">
                     <tr>
-                        <th>No.</th>
-                        <th>Name</th>
-                        <th>Image</th>
-                        <th>Action</th>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($category as $row)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $row->name }}</td>
                             <td>
-                                <img src="{{ url('storage/category/', $row->image) }}" alt="{{ $row->name }}" class="w-25">
+                                <img src="{{ url('storage/category/', $row->image) }}" alt="{{ $row->name }}" class="img-thumbnail" style="max-width: 100px;">
                             </td>
                             <td>
                                 <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModalCategory{{ $row->id }}" type="button">
                                     <i class="bi bi-pencil"></i>
                                 </button>
-                                @include('pages.admin.category.modal-edit')
                                 <form action="{{ route('admin.category.destroy', $row->id) }}" method="post" class="d-inline">
                                     @csrf
                                     @method('DELETE')
@@ -60,6 +59,7 @@
                     @endforelse
                 </tbody>
             </table>
+            
         </div>
     </div>
 @endsection

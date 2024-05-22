@@ -42,6 +42,20 @@
 
 <body>
 
+    {{-- ANIMASI TEKS --}}
+    <style>
+        #hello-text {
+            position: relative;
+            animation: slideRight 5s linear infinite;
+        }
+
+        @keyframes slideRight {
+            from { left: -100%; }
+            to { left: 100%; }
+        }
+    </style>
+    {{-- Animasi Teks End --}}
+
     <!-- ======= Header ======= -->
     @include('layouts.include.navbar')
     <!-- End Header -->
