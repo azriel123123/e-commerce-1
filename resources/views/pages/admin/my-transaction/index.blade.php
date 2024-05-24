@@ -24,37 +24,47 @@
         <div class="card-body">
             <div class="card-title"><i class="bi bi-cart"></i>List Transaction</div>
 
-            <table class="table table-striped table-hover table-bordered datatable">
+            <table class="table table-bordered mt-4">
                 <thead>
                     <tr>
-                        <td>No</td>
-                        <td>Name Account</td>
-                        <td>Name</td>
-                        <td>Email</td>
-                        <td>Phone</td>
-                        <td>Total</td>
-                        <td>Action</td>
+                        <th>No</th>
+                        <th>Name Account</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
-                @forelse ($myTransactions as $row)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ auth()->user()->name }}</td>
-                    <td>{{ $transaction->name }}</td>
-                    <td>{{ $transaction->email }}</td>
-                    <td>{{ $transaction->phone }}</td>
-                    <td>{{ $transaction->total }}</td>
-                    <td>Show</td>
-                </tr>
-            @empty
-                <tr>
-                    <td colspan="7" class="text-center">Transaction Not Found</td>
-                </tr>
-            @endforelse
-            
+                <tbody>
+                    @forelse ($myTransactions as $row)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ auth()->user()->name }}</td>
+                            <td>{{ $row->name }}</td>
+                            <td>{{ $row->email }}</td>
+                            <td>{{ $row->phone }}</td>
+                            <td>
+                                @if ($row->status === 'expired')
+                                    <span class="badge bg-danger">Expired</span>
+                                @elseif ($row->status === 'pending')
+                                    <span class="badge bg-warning">Pending</span>
+                                @elseif ($row->status === 'settlement')
+                                    <span class="badge bg-success">Settlement</span>
+                                @else
+                                    <span class="badge bg-secondary">Unknown</span>
+                                @endif
+                            </td>
+                            <td><a href="{{ route('admin.my-transaction.show', $row->id) }}" class="btn btn-primary">Show</a></td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="8" class="text-center">Transaction Not Found</td>
+                        </tr>
+                    @endforelse
+                </tbody>
             </table>
         </div>
     </div>
-
 
 @endsection

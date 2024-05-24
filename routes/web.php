@@ -30,13 +30,16 @@ Route::name('admin.')->prefix('admin')->middleware('admin')->group(function () {
     Route::post('/user/{id}/reset-password', [\App\Http\Controllers\Admin\DashboardController::class, 'resetPassword'])->name('reset-password');
     Route::post('/user/{id}/change-password', [\App\Http\Controllers\Admin\DashboardController::class, 'changePassword'])->name('change-password');
     Route::resource('/transaction', TransactionController::class);
-    Route::resource('/my-transaction', MyTransactionController::class)->only('index', 'show');
+    Route::resource('/my-transaction', MyTransactionController::class)->only('index');
+    Route::get('/my-transaction/{id}/{slug}', [MyTransactionController::class, 'showDataBySlugId'])->name('my-transaction-showDataBySlugId');
 });
 
 
 Route::name('user.')->prefix('user')->middleware('user')->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('/my-transaction', MyTransactionController::class)->only(['index','show']);
+    Route::resource('/my-transaction', MyTransactionController::class)->only(['index']);
+    Route::get('/my-transaction/{id}/{slug}', [MyTransactionController::class, 'showDataBySlugId'])->name('my-transaction-showDataBySlugId');
+    
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

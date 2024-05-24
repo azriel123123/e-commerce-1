@@ -15,6 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
+
         $category = Category::select('id', 'name', 'image')->latest()->get();
 
         return view('pages.admin.category.index', compact('category'));

@@ -42,6 +42,9 @@
 
 <body>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
+
     {{-- ANIMASI TEKS --}}
     <style>
         #hello-text {
@@ -53,6 +56,7 @@
             from { left: -100%; }
             to { left: 100%; }
         }
+
     </style>
     {{-- Animasi Teks End --}}
 
